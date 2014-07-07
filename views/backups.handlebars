@@ -1,0 +1,27 @@
+<h1>Account: {{account_slug}}</h1>
+<a href="/">Back to accounts</a>
+<h2>Deployment: {{deployment_id}}</h2>
+<a href="/deployments/{{account_slug}}">Back to deployments</a>
+<h3>Backups</h3>
+<div class="backups">
+<ul>
+{{#each backups}}
+<li><h4>Backup id: {{id}}</h4>
+  <div class="backup">
+  Database Names: {{database_names}}
+  Created at: {{created_at}}<br/>
+  Type: {{type}}<br/>
+  Status: {{status}}<br/>
+  File Name: {{filename}}<br/>
+  Size: {{size}}<br>
+  <div class="backuplinks">
+  <ul>
+    {{#each links}}
+    <li><a href="">{{rel}}</a></li>
+    {{/each}}
+  </ul>
+  </div>
+</li>
+{{/each}}
+</ul>
+</div>

@@ -1,0 +1,11 @@
+{
+  "name": "apiexplorer",
+  "description": "An example Node.js/Express/REST client using the MongoHQ API",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "4.x",
+    "express3-handlebars": "^0.5.0",
+    "node-rest-client": "^1.0.0",
+  }
+}

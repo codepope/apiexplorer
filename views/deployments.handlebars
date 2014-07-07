@@ -1,0 +1,17 @@
+<h1>Account: {{account_slug}}</h1>
+<a href="/">Back to accounts</a>
+<div class="deployments">
+<ul>
+{{#each deployments}}
+<li><h2>Deployment: {{id}}</h2>
+  <a href="/database/backups/{{../account_slug}}/{{id}}">Backups</a>
+  <ul>
+    {{#each databases}}
+    <li>
+      <h3>{{name}} ({{id}})</h3>
+      <a href="/database/stats/{{../../account_slug}}/{{../id}}/{{name}}">Statistics</a>
+    </li>
+    {{/each}}
+  </ul>
+{{/each}}
+</div>

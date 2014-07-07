@@ -1,0 +1,30 @@
+<h1>Account: {{account_slug}}</h1>
+<a href="/">Back to accounts</a>
+<h2>Deployment: {{deployment_id}}</h2>
+<a href="/deployments/{{account_slug}}">Back to deployments</a>
+<h3>Database: {{database_name}}</h3>
+<div class="stats">
+<ul>
+{{#each stats}}
+<li><h4>{{@key}}</h4>
+  <div class="hoststats">
+    Average Object Size: {{avgObjSize}}<br/>
+    <br/>
+    Collections: {{collections}}<br/>
+    Indexes: {{indexes}}<br/>
+    <br/>
+    Data File Version: {{dataFileVersion.major}}.{{dataFileVersion.minor}}<br/>
+    <br>
+    Data Size: {{dataSize}}<br/>
+    File Size: {{fileSize}}<br/>
+    Index Size: {{indexSize}}<br/>
+    Storage Size: {{storageSize}}<br/>
+    <br/>
+    Namespace Size(MB): {{nsSizeMB}}<br/>
+    Extents: {{numExtents}}<br/>
+    Objects: {{objects}}    
+  </div>
+</li>
+{{/each}}
+</ul>
+</div>
