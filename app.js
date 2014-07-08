@@ -1,30 +1,29 @@
+var express = require("express");
+var exphbs = require("express3-handlebars")
 var util = require('util');
 var Client = require('node-rest-client').Client;
-var Access = require('./accesstoken.js');
+var fs=require('fs')
+var accesstoken=fs.readFileSync("./accesstoken.txt")
+
 var baseURL = "https://beta-api.mongohq.com";
 
 var headers = {
   "Content-Type": "application-json",
   "Accept-Version": "2014-06",
-  "Authorization": "Bearer " + Access.accessToken()
+  "Authorization": "Bearer " + accesstoken
 }
 var httpArgs = {
   "headers": headers
 }
 
-client = new Client();
+var client = new Client();
 
-var express = require("express");
-var exphbs = require("express3-handlebars")
 var app = express();
 var server = require("http").createServer(app);
-app.engine('handlebars', exphbs({
-  defaultLayout: 'main'
-}));
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 app.get('/', function(req, res) {
-  // enumerate the accounts for this user
   client.get(util.format("%s/accounts", baseURL), httpArgs, function(accounts,
     response) {
     if (response.statusCode != 200) {
@@ -37,7 +36,6 @@ app.get('/', function(req, res) {
     }
     res.render("accounts", { "accounts": accounts });
   });
-
 });
 
 app.get('/deployments/:account_slug', function(req, res) {
