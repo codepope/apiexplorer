@@ -1,9 +1,9 @@
 var express = require("express");
-var exphbs = require("express3-handlebars")
+var exphbs = require("express3-handlebars");
 var util = require('util');
 var Client = require('node-rest-client').Client;
-var fs=require('fs')
-var accesstoken=fs.readFileSync("./accesstoken.txt")
+var fs=require('fs');
+var accesstoken=fs.readFileSync("./accesstoken.txt");
 
 var baseURL = "https://beta-api.mongohq.com";
 
@@ -17,7 +17,6 @@ var httpArgs = {
 }
 
 var client = new Client();
-
 var app = express();
 var server = require("http").createServer(app);
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
