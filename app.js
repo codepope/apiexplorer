@@ -5,7 +5,7 @@ var Client = require('node-rest-client').Client;
 var fs=require('fs');
 var accesstoken=fs.readFileSync("./accesstoken.txt");
 
-var baseURL = "https://beta-api.mongohq.com";
+var baseURL = "https://api.compose.io";
 
 var headers = {
   "Content-Type": "application-json",
@@ -25,6 +25,7 @@ app.set('view engine', 'handlebars');
 app.get('/', function(req, res) {
   client.get(util.format("%s/accounts", baseURL), httpArgs, function(accounts,
     response) {
+      console.log(accounts.toString())
     if (response.statusCode != 200) {
       if (accounts.hasOwnProperty("error")) {
         res.send(accounts.error);
